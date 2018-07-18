@@ -10,7 +10,7 @@ jQuery(document).ready(function($){
 		  if(!email){
 		  	alert('no entro nada');
 		  }else if(!password){
-		  	alert('debe ingresar una contraseña.' + email);
+		  	alert('debe ingresar una contraseña.');
 		  }else{
 
 		  firebase
@@ -24,29 +24,30 @@ jQuery(document).ready(function($){
 			}
 		}
 	);	
-});
 
-jQuery(document).ready(function($){
-	$('.register').on(
+	$('.registro').on(
 		'submit',
 		function(e){
 		  e.preventDefault();
 
-		  var email = $('.register .email').val();
-		  var password= $('.register .password').val();
+		  var email = $('.registro .email').val();
+		  var password= $('.registro .password').val();
 
 		  if(!email){
 		  	alert('no entro nada');
 		  }else if(!password){
 		  	alert('debe ingresar una contraseña.' + email);
 		  }else{
-		  	firebase.auth().createUserWithEmailAndPassword(email, password)
-		  	.catch(function(error) {
-		  		alert('no eres Bienvenido');
-  
-		   });
 
-		   }
+		  firebase
+			.auth().createUserWithEmailAndPassword(email, password)
+			.then(function(){
+				alert('Bienvenido');
+			})
+			.catch(function(error) {
+				alert('No Eres Bienvenido');
+				});
+			};
 		}
 	);	
 });
